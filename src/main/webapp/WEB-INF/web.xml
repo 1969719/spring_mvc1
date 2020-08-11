@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+<!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+        <!--</listener>-->
+        <!--指定spring配置文件的位置-->
+        <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath:spring_mvc.xml</param-value>-->
+        <!--</context-param>-->
+        <!--注册中央调度器 DispatcherServlet-->
+  <!--中文乱码处理-->
+  <filter>
+    <filter-name>encoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  </filter>
+<!--注册中央调度器 DispatcherServlet-->
+<servlet>
+  <servlet-name>app</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <!--springmvc的配置文件的位置-->
+  <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring_mvc.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+        <!--配置映射-->
+<servlet-mapping>
+<servlet-name>app</servlet-name>
+<url-pattern>/</url-pattern>
+</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>app</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+        </web-app>
